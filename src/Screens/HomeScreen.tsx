@@ -61,6 +61,8 @@ const HomeScreen: React.FC = () => {
             height={220}
             chartConfig={chartConfig}
             style={styles.chart}
+            yAxisLabel=""
+            yAxisSuffix=""
           />
         </View>
       </ScrollView>
