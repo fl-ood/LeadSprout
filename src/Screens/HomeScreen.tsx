@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, Dimensions, StyleSheet, ScrollView, TouchableOpacity, StatusBar} from 'react-native';
-import { LineChart, ProgressChart, BarChart } from 'react-native-chart-kit';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { View, Text, Dimensions, StyleSheet, ScrollView, StatusBar} from 'react-native';
+import GraphComponent from './GraphComponent';
+import BottomNav from './BottomNav';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -32,72 +32,18 @@ const barChartData = {
 const HomeScreen: React.FC = () => {
   return (
     <View style={styles.mainContainer}>
+      <StatusBar hidden={true} />
       <ScrollView style={styles.scrollContainer}>
         <View style={styles.container}>
           <Text style={styles.heading}>LeadSprout Dashboard</Text>
-
-          <Text style={styles.subheading}>Weekly Line Chart</Text>
-          <LineChart
-            data={lineChartData}
-            width={screenWidth - 40}
-            height={220}
-            chartConfig={chartConfig}
-            style={styles.chart}
-          />
-
-          <Text style={styles.subheading}>Progress Chart</Text>
-          <ProgressChart
-            data={progressChartData}
-            width={screenWidth - 40}
-            height={220}
-            chartConfig={chartConfig}
-            style={styles.chart}
-          />
-
-          <Text style={styles.subheading}>Monthly Bar Chart</Text>
-          <BarChart
-            data={barChartData}
-            width={screenWidth - 40}
-            height={220}
-            chartConfig={chartConfig}
-            style={styles.chart}
-            yAxisLabel=""
-            yAxisSuffix=""
-          />
+          <GraphComponent type="lineChart" data={lineChartData} title="Weekly Line Chart" />
+          <GraphComponent type="progressChart" data={progressChartData} title="Progress Chart" />
+          <GraphComponent type="barChart" data={barChartData} title="Monthly Bar Chart" />
         </View>
       </ScrollView>
-
-      <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.navItem}>
-          <Icon name="home" size={30} color="#2e7d32" />
-          <Text style={styles.navText}>Home</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Icon name="line-chart" size={30} color="#2e7d32" />
-          <Text style={styles.navText}>Stats</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Icon name="user" size={30} color="#2e7d32" />
-          <Text style={styles.navText}>Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Icon name="cog" size={30} color="#2e7d32" />
-          <Text style={styles.navText}>Settings</Text>
-        </TouchableOpacity>
-      </View>
+      <BottomNav />
     </View>
   );
-};
-
-const chartConfig = {
-  backgroundColor: '#388e3c',
-  backgroundGradientFrom: '#66bb6a',
-  backgroundGradientTo: '#81c784',
-  decimalPlaces: 2, // optional, defaults to 2dp
-  color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-  style: {
-    borderRadius: 16,
-  },
 };
 
 const styles = StyleSheet.create({
@@ -121,31 +67,6 @@ const styles = StyleSheet.create({
     color: '#2e7d32',
     marginBottom: 20,
     marginTop: 40,
-  },
-  subheading: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: '#2e7d32',
-    marginBottom: 10,
-  },
-  chart: {
-    marginVertical: 10,
-    borderRadius: 16,
-  },
-  bottomNav: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingVertical: 10,
-    borderTopWidth: 1,
-    borderTopColor: '#ddd',
-    backgroundColor: '#fff',
-  },
-  navItem: {
-    alignItems: 'center',
-  },
-  navText: {
-    fontSize: 12,
-    color: '#2e7d32',
   },
 });
 
