@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Dimensions, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, Dimensions, StyleSheet, ScrollView, TouchableOpacity, StatusBar} from 'react-native';
 import { LineChart, ProgressChart, BarChart } from 'react-native-chart-kit';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -16,7 +16,7 @@ const lineChartData = {
 };
 
 const progressChartData = {
-  labels: ['A', 'B', 'C'], // optional
+  labels: ['A', 'B', 'C'], 
   data: [0.4, 0.6, 0.8],
 };
 
@@ -104,9 +104,11 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: '#e8f5e9',
+    paddingBottom: 15,
   },
   scrollContainer: {
     flex: 1,
+    paddingBottom: 60,
   },
   container: {
     flex: 1,
@@ -118,6 +120,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#2e7d32',
     marginBottom: 20,
+    marginTop: 40,
   },
   subheading: {
     fontSize: 20,

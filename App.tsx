@@ -9,10 +9,10 @@ const Stack = createNativeStackNavigator()
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen 
-        name="Home" 
-        component={HomeScreen} 
+          name="Home"
+          component={HomeScreen} 
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -20,10 +20,4 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
 });
