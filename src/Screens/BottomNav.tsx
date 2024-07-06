@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, Dimensions, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import ToggleCameraModal from './Camera';
 
-const screenWidth = Dimensions.get('window').width;
 
 const BottomNav: React.FC = () => {
     return (
@@ -15,9 +15,9 @@ const BottomNav: React.FC = () => {
           <Icon name="line-chart" size={30} color="#2e7d32" />
           <Text style={styles.navText}>Stats</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Icon name="user" size={30} color="#2e7d32" />
-          <Text style={styles.navText}>Profile</Text>
+        <TouchableOpacity style={styles.navItem} onPress={() => ToggleCameraModal()}>
+          <Icon name="camera" size={30} color="#2e7d32" />
+          <Text style={styles.navText}>Scan</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
           <Icon name="cog" size={30} color="#2e7d32" />
